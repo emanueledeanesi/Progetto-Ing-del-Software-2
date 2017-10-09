@@ -61,7 +61,84 @@ end
 
 # Converte un numero in numero romano
 def to_roman(n)
-  false
+  if n>1000
+    migliaia = []
+      i = n/1000
+      n = n%1000
+      for [1..i].each migliaia << M 
+  end
+  
+  if 100>=n>1000
+    i = n/100
+    n = n%100
+    when i == 1 puts "C"
+    end
+    when i == 2 puts "CC"
+    end
+    when i == 3 puts "CCC"
+    end
+    when i == 4 puts "CD"
+    end
+    when i == 5 puts "D"
+    end
+    when i == 6 puts "DC"
+    end
+    when i == 7 puts "DCC"
+    end
+    when i == 8 puts "DCCC"
+    end
+    when i == 9 puts "CM"
+    end
+  end
+  
+  if 10>=n>100
+    i = n/10
+    n = n%10
+    when i == 1 puts "X"
+    end
+    when i == 2 puts "XX"
+    end
+    when i == 3 puts "XXX"
+    end
+    when i == 4 puts "XL"
+    end
+    when i == 5 puts "L"
+    end
+    when i == 6 puts "XL"
+    end
+    when i == 7 puts "LXX"
+    end
+    when i == 8 puts "LXXX"
+    end
+    when i == 9 puts "XC"
+    end
+  end
+  
+   if 1>=n>10
+    i = n/1
+    n = n%1
+    when i == 1 puts "I"
+    end
+    when i == 2 puts "II"
+    end
+    when i == 3 puts "III"
+    end
+    when i == 4 puts "IV"
+    end
+    when i == 5 puts "V"
+    end
+    when i == 6 puts "VI"
+    end
+    when i == 7 puts "VII"
+    end
+    when i == 8 puts "VIII"
+    end
+    when i == 9 puts "IX"
+    end
+  end
+ 
+ if n<=0 puts "il numero inserito non può essere convertito"
+      
 end
 
 ######
