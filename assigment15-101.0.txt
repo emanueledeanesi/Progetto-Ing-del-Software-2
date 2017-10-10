@@ -61,84 +61,101 @@ end
 
 # Converte un numero in numero romano
 def to_roman(n)
-  if n>1000
-    migliaia = []
-      i = n/1000
-      n = n%1000
-      for [1..i].each migliaia << M 
+
+n = gets.chomp.to_i
+  
+if n>1000
+  migliaia = []
+  i = n/1000
+  n = n%1000
+  [1..i].each {|i| migliaia << M}
+
+else
+  if 100>=n and n<1000
+    while 100>=n and n<1000
+      i = n/100
+      case i
+        when 1 
+          puts 'C'
+        when 2
+          puts 'CC'
+        when 3 
+          puts 'CCC'
+        when 4 
+          puts 'CD'
+        when 5 
+          puts 'D'
+        when 6 
+          puts 'DC'
+        when 7 
+          puts 'DCC'
+        when 8 
+          puts 'DCCC'
+        when 9 
+          puts 'CM'
+        end
+    end  
+   n = n%100
+  end
+    
+  if 10>=n and n<100
+    while 10>=n and n<100
+      i = n/10
+      case i
+        when 1 
+          puts 'X'
+        when 2 
+          puts 'XX'
+        when 3 
+          puts 'XXX'
+        when 4
+          puts 'XL'
+        when 5 
+          puts 'L'
+        when 6 
+          puts 'XL'
+        when 7 
+          puts 'LXX'
+        when 8 
+          puts 'LXXX'
+        when 9 
+          puts 'XC'
+        end
+    end 
+   n = n%10
   end
   
-  if 100>=n>1000
-    i = n/100
-    n = n%100
-    when i == 1 puts "C"
-    end
-    when i == 2 puts "CC"
-    end
-    when i == 3 puts "CCC"
-    end
-    when i == 4 puts "CD"
-    end
-    when i == 5 puts "D"
-    end
-    when i == 6 puts "DC"
-    end
-    when i == 7 puts "DCC"
-    end
-    when i == 8 puts "DCCC"
-    end
-    when i == 9 puts "CM"
-    end
+  if 1>=n and n<10  
+    while 1>=n and n<10  
+      i = n/1
+      case n
+       when 1 
+         puts 'I'
+       when 2 
+         puts 'II'
+       when 3 
+         puts 'III'
+       when 4 
+         puts 'IV'
+       when 5 
+         puts 'V'
+       when 6 
+         puts 'VI'
+       when 7 
+         puts 'VII'
+       when 8 
+         puts 'VIII'
+       when 9 
+         puts 'IX'
+       end
+    end  
+   n = n%1
   end
+end
   
-  if 10>=n>100
-    i = n/10
-    n = n%10
-    when i == 1 puts "X"
-    end
-    when i == 2 puts "XX"
-    end
-    when i == 3 puts "XXX"
-    end
-    when i == 4 puts "XL"
-    end
-    when i == 5 puts "L"
-    end
-    when i == 6 puts "XL"
-    end
-    when i == 7 puts "LXX"
-    end
-    when i == 8 puts "LXXX"
-    end
-    when i == 9 puts "XC"
-    end
+   if n<=0 
+    puts "il numero inserito non può essere convertito"
   end
-  
-   if 1>=n>10
-    i = n/1
-    n = n%1
-    when i == 1 puts "I"
-    end
-    when i == 2 puts "II"
-    end
-    when i == 3 puts "III"
-    end
-    when i == 4 puts "IV"
-    end
-    when i == 5 puts "V"
-    end
-    when i == 6 puts "VI"
-    end
-    when i == 7 puts "VII"
-    end
-    when i == 8 puts "VIII"
-    end
-    when i == 9 puts "IX"
-    end
-  end
- 
- if n<=0 puts "il numero inserito non può essere convertito"
-      
 end
 
 ######
