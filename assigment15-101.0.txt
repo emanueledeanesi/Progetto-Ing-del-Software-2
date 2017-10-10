@@ -56,7 +56,16 @@ end
 
 # Conta il numero di caratteri maiuscoli in una stringa
 def count_upcased_letters(string)
-  false
+  i = 0
+  array_caratteri = string.chars.to_a
+  array_caratteri.each do |carattere|
+    if (carattere != carattere.downcase)  
+      i=i+1
+    else
+      next
+    end
+  end
+  puts i
 end
 
 # Converte un numero in numero romano
