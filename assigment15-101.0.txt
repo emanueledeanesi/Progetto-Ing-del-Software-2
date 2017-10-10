@@ -70,101 +70,79 @@ end
 
 # Converte un numero in numero romano
 def to_roman(n)
-
-n = gets.chomp.to_i
-  
-if n>1000
-  migliaia = []
+  #n = gets.chomp.to_i
+  num=""
   i = n/1000
-  n = n%1000
-  [1..i].each {|i| migliaia << M}
-
-else
-  if 100>=n and n<1000
-    while 100>=n and n<1000
-      i = n/100
-      case i
-        when 1 
-          puts 'C'
-        when 2
-          puts 'CC'
-        when 3 
-          puts 'CCC'
-        when 4 
-          puts 'CD'
-        when 5 
-          puts 'D'
-        when 6 
-          puts 'DC'
-        when 7 
-          puts 'DCC'
-        when 8 
-          puts 'DCCC'
-        when 9 
-          puts 'CM'
-        end
-    end  
-   n = n%100
+  if(i>0)
+    (1..i).each {|v| num << 'M'}
   end
-    
-  if 10>=n and n<100
-    while 10>=n and n<100
-      i = n/10
-      case i
-        when 1 
-          puts 'X'
-        when 2 
-          puts 'XX'
-        when 3 
-          puts 'XXX'
-        when 4
-          puts 'XL'
-        when 5 
-          puts 'L'
-        when 6 
-          puts 'XL'
-        when 7 
-          puts 'LXX'
-        when 8 
-          puts 'LXXX'
-        when 9 
-          puts 'XC'
-        end
-    end 
-   n = n%10
+  n = n%1000 #n ora è il numero inserito senza le mgliaia
+  i = n/100
+  case i
+    when 1 
+      num << 'C'
+    when 2
+      num << 'CC'
+    when 3 
+      num << 'CCC'
+    when 4 
+      num << 'CD'
+    when 5 
+      num << 'D'
+    when 6 
+      num << 'DC'
+    when 7 
+      num << 'DCC'
+    when 8 
+      num << 'DCCC'
+    when 9 
+      num << 'CM'
   end
-  
-  if 1>=n and n<10  
-    while 1>=n and n<10  
-      i = n/1
-      case n
-       when 1 
-         puts 'I'
-       when 2 
-         puts 'II'
-       when 3 
-         puts 'III'
-       when 4 
-         puts 'IV'
-       when 5 
-         puts 'V'
-       when 6 
-         puts 'VI'
-       when 7 
-         puts 'VII'
-       when 8 
-         puts 'VIII'
-       when 9 
-         puts 'IX'
-       end
-    end  
-   n = n%1
+  n = n%100
+  i = n/10
+  case i
+    when 1 
+      num << 'X'
+    when 2 
+      num << 'XX'
+    when 3 
+      num << 'XXX'
+    when 4
+      num << 'XL'
+    when 5 
+      num << 'L'
+    when 6 
+      num << 'XL'
+    when 7 
+      num << 'LXX'
+    when 8 
+      num << 'LXXX'
+    when 9 
+      num << 'XC'
   end
-end
-  
-   if n<=0 
-    puts "il numero inserito non può essere convertito"
+  n = n%10
+  i = n/1
+  case n
+    when 1 
+      num << 'I'
+    when 2 
+      num << 'II'
+    when 3 
+      num << 'III'
+    when 4 
+      num << 'IV'
+    when 5 
+      num << 'V'
+    when 6 
+      num << 'VI'
+    when 7 
+      num << 'VII'
+    when 8 
+      num << 'VIII'
+    when 9 
+      num << 'IX'
   end
+  puts num
 end
 
 ######
