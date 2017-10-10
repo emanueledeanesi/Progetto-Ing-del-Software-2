@@ -151,23 +151,25 @@ end
 ######
 
 class Point2D
-  # costruisce un punto con coordinate (x,y)
-  # nota che non e' necessario nessun controllo sul tipo di x e y
+  attr_reader :x, :y
+  
   def initialize(x, y)
-    nil
+    @x = x
+    @y = y
+  end
+  
+  def somma (point)
+    @a = self.x.to_i + point.x.to_i
+    @b = self.y.to_i + point.y.to_i
+    return newpoint = Point2D.new("#{@a}","#{@b}")
   end
 
-  # la classe punto deve avere rendere accessibili gli attributi `x` e `y`
-  # IN SOLA LETTURA
-
-  # la funzione `+` riceve come argomento un oggetto Point2D e restituisce un
-  # nuovo oggetto Point2D che ha come coordinate la somma delle coordinate dei
-  # due oggetti. (x1 + x2, y1 + y2)
-  # la funzione non deve alterare lo stato interno dell'oggetto, ma restituire
-  # un nuovo oggetto
-  def + (point)
-    nil
+  def to_s
+    puts "(#{@x},#{@y})"
   end
+  
+end
+
 
   # Restituisce una rappresentazione testuale dell'oggetto punto, nella forma
   # "(x,y)", senza spazi.
