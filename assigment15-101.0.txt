@@ -158,7 +158,7 @@ class Point2D
     @y = y
   end
   
-  def somma (point)
+  def + (point)
     a = self.x + point.x
     b = self.y + point.y
     return Point2D.new(a,b)
@@ -173,12 +173,15 @@ require 'date' # necessario per l'uso della classe Date
 
 class Book
   attr_accessor :title, :author, :release_date, :publisher, :isbn
-
   # Implementa il costruttore
   # dai un'occhiata a https://robots.thoughtbot.com/ruby-2-keyword-arguments
   def initialize(title:, author:, release_date:, publisher:, isbn:)
+    @title=title
+    @author=author
+    @release_date=release_date
+    @publisher=publisher
+    @isbn=isbn
   end
-
   # requisiti perche' un libro sia considerato valido:
   # title deve essere una stringa (@title.class == String) non vuota
   # author deve essere una stringa non vuota
@@ -186,15 +189,35 @@ class Book
   # publisher deve essere una stringa non vuota
   # isbn deve essere un Integer minore di 10**10 e maggiore di 10**9
   def valid?
-    nil
+    $errore=[]
+    if (title.class != String || title=='')
+      $errore << :title
+    end
+    if (author.class != String || author=='')
+      $errore << :author
+    end
+    if !(release_date.is_a?Date)
+      $errore << :release_date
+    end
+    if (publisher.class != String || publisher=='')
+      $errore << :publisher
+    end
+    if (isbn <= 10**9 || isbn >=10**10)
+      $errore << :isbn
+    end
+    if $errore == []
+      return TRUE
+    else
+      return FALSE
+    end
   end
-
   # restituisce un array di simboli.
   # Se l'oggetto e' valido, restituisce un vettore vuoto
   # Se non lo e', per ogni attributo che non e' valido, la chiave per
   # quell'attributo deve essere presente nel vettore, in qualsiasi ordine.
   # esempio: title e author non sono validi, restituisce [:title, :author]
   def errors
-    nil
+    self.valid?
+    return $errore
   end
 end
