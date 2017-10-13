@@ -1,62 +1,64 @@
-######
-# Implementa le seguenti funzioni come richiesto nel commento che le precede
-######
 
-# Restituisce una stringa che dice "Benvenuto"
-def welcome_message
+def welcome_message				# La funzione restituisce una stringa che dice "Benvenuto"
   puts "Benvenuto"
 end
 
-# Restituisce n! (fattoriale)
-def factorial(n)
-  if n == 0
+
+def factorial(n)				# La funzione restituisce il fattoriale di n	
+  if n == 0					# Se n=0 la funzione restituisce 1
     puts "1"
   else
-    if n>0
-	  tot=1
-  	  (1..n).each do |i|
-	    tot = tot * i
+    if n>0					# Se n>0 inizializziamo la variabile "tot" a 1.
+	  tot=1					# Viene reinizzializzata con il risultato della moltiplicazione tra il valore attuale di 
+  	  (1..n).each do |i|			# tot e il valore rappresentato dalla variabile "i". La variabile i grazie 
+	    tot = tot * i			# all'invocazione di '(1..n).each' assume tutti i  valori dei numeri tra 1 e n
 	  end
-	  puts tot
-  	else
+	  puts tot				# Al termine del blocco 'each do..' la funzione restituisce il fattoriale di n
+  	else					# Controllo che il valore di n sia nel dominio della funzione fattoriale
   	  puts "Il valore inserito non è un numero maggiore o uguale a 0"
   	end
   end
 end
 
-# Restituisce la stringa più lunga in un array di stringhe
-def find_longest_string(array)
+
+def find_longest_string(array)			# La funzione restituisce la stringa più lunga in un array di stringhe
   max=[]
-  max << ""
-  array.map do |word|
-    if word.length == max.last.length
-      max << word
-    end
-    if word.length > max.last.length
-      max=[]
+  max << ""					# Inizializziamo un array vuoto "max" in cui inserire la stringa più lunga
+  array.map do |word|				# Con il metodo map scorriamo l'array di cui vogliamo trovare la stringa più lunga
+    if word.length == max.last.length		# e confrontiamo la lunghezza di ciascun elemento "word" con la lunghezza dell'ultima 	
+      max << word				# stringa inserita nell'array max. Se la launghezza delle stringhe confrontate è uguale
+    end						# la stringa viene aggiunta all'array max
+    if word.length > max.last.length		# se la stringa ha una lunghezza maggiore dell'ultima stringa inserita nell'array max
+      max=[]					# l'array max viene reinizializzato vuoto e viene inserita la "word" del confronto
       max << word
     end
   end
-  if max.last==""
+  if max.last==""				# Questo controllo serve per evitare che l'array in ingresso sia un array vuoto
     puts "L'array è vuoto o ha tutti gli elementi stringhe vuote"
   else
-    puts max 
-  end
-end
+    retunr max[0]				# Al termine dei confronti e in seguito alla verifica della validità dell'array di 
+  end						# ingresso la funziona ritorna la prima stringa dell'array max. L'implementazione della 
+end						# nostra funzione, nel caso in cui l'array di input abbia più stringhe con la stessa 
+						# lunghezza della stringa più lunga, le inserisce tutte nell'array max. Poichè la 
+						# funzione return è unica e la consegna richiede di restituire la stringa più lunga, 
+						# possiamo restituire solo la prima stringa dell'array max. Sostituendo return max a 
+						# retunr max[0], la funzione può restituire l'array che contiene le stringhe con
+						# lunghezza maggiore, tuttavia l'output della consegna richiede una stringa.
+						
+						
 
-# Restituisce true se l'array contiene altri array (es. [[1],2,3] => true)
-def has_nested_array?(array)
-  array.each do |element|
-    if element.class == Array
-      return TRUE
+def has_nested_array?(array)			# La funzione restituisce TRUE se l'array contiene altri array
+  array.each do |element|			# Attraverso il metodo each confrontiamo se la classe di ciascun "element" dell'array di
+    if element.class == Array			# input corrisponde alla classe "Array". Se la funzione trova un confronto con esito 
+      return TRUE				# positivo resituisce TRUE, altrimenti restituisce FALSE
     end
   end
   return FALSE
 end
 
-# Conta il numero di caratteri maiuscoli in una stringa
-def count_upcased_letters(string)
-  i = 0
+
+def count_upcased_letters(string)		# La funzione conta il numero di caratteri maiuscoli in una stringa
+  i = 0						# Inizializziamo la variabile "i" a 0 
   array_caratteri = string.chars.to_a
   array_caratteri.each do |carattere|
     if (carattere != carattere.downcase)  
@@ -68,19 +70,19 @@ def count_upcased_letters(string)
   puts i
 end
 
-# Converte un numero in numero romano
-def to_roman(n)
+
+def to_roman(n)					# La funzione converte un numero in numero romano
   #n = gets.chomp.to_i
-  num=""
-  i = n/1000
-  if(i>0)
-    (1..i).each {|v| num << 'M'}
+  num=""					# Inizializziamo la stringa "num" vuota
+  i = n/1000					# Inizializziamo la variabile "i" come risultato della divisione tra n e 1000
+  if(i>0)					# Se n è divisibile per 1000 i volte, la funzione each inserisce nella stringa num
+    (1..i).each {|v| num << 'M'}		# la lettera "M" i volte
   end
-  n = n%1000 #n ora è il numero inserito senza le mgliaia
-  i = n/100
-  case i
-    when 1 
-      num << 'C'
+  n = n%1000 					# La variabile n adesso viene reinizializzata con il valore del resto della divisione 
+  i = n/100					# tra n e 1000 e inizializzamo i con il risultato della divisione tra n e 100.
+  case i					# Applicando il metodo 'case.. when..' convertiamo le centinai contenute nel
+    when 1 					# numero n nel corrispettivo simbolo in numero romano che viene aggiunto alla stringa
+      num << 'C'				# num. 
     when 2
       num << 'CC'
     when 3 
@@ -98,11 +100,11 @@ def to_roman(n)
     when 9 
       num << 'CM'
   end
-  n = n%100
-  i = n/10
-  case i
-    when 1 
-      num << 'X'
+  n = n%100					# Ripetendo in maniera analoga l'algoritmo sopra descritto reiniziallizzando n come
+  i = n/10					# resto della divisione tra n e 100, i come risultato della divisione tra n e 100,
+  case i					# attraverso un'opportuna implementazione del metodo 'case.. when..' convertiamo
+    when 1 					# le decine contenute in n nel corrispettivo simbolo in numero romano che viene poi 
+      num << 'X'				# inserito nella stringa num
     when 2 
       num << 'XX'
     when 3 
@@ -120,11 +122,11 @@ def to_roman(n)
     when 9 
       num << 'XC'
   end
-  n = n%10
-  i = n/1
-  case n
-    when 1 
-      num << 'I'
+  n = n%10					# Ripetendo in maniera analoga l'algoritmo sopra descritto reiniziallizzando n come
+  i = n/1					# resto della divisione tra n e 10, i come risultato della divisione tra n e 1,
+  case n					# attraverso un'opportuna implementazione del metodo 'case.. when..' convertiamo
+    when 1 					# le unità contenute in n nel corrispettivo simbolo in numero romano che viene poi 
+      num << 'I'				# inserito nella stringa num
     when 2 
       num << 'II'
     when 3 
@@ -141,83 +143,74 @@ def to_roman(n)
       num << 'VIII'
     when 9 
       num << 'IX'
-  end
-  puts num
-end
+  end						# Dopo aver convertito le migliaia, le centinai, le decine e le unità nel
+  puts num					# corrispettivo simbolo in numero romano ciauscuno inserito nella stringa num
+end						# la funzione restituisce la stringa num
 
-######
-# Completa l'implementazione delle seguenti classi seguendo quanto
-# richiesto dai commenti.
-######
+
 
 class Point2D
-  attr_reader :x, :y
+  attr_reader :x, :y				# La classe Point2D rende accessibili in sola lettura gli attributi 'x' e 'y'
   
-  def initialize(x, y)
+  def initialize(x, y)				# La funzione initialize permette di inizializzare gli attributi 
     @x = x
     @y = y
   end
   
-  def + (point)
-    a = self.x + point.x
-    b = self.y + point.y
-    return Point2D.new(a,b)
-  end
+  def + (point)					# La funzione + inizializza 'a' e 'b' come somma delle corrispettive coordinate x e y
+    a = self.x + point.x			# del punto a cui a viene applicata la funzione e del punto che viene dato come input
+    b = self.y + point.y			
+    return Point2D.new(a,b)			# La funzione restituisce un nuovo oggetto di tipo Point2D, invocandola per esempio
+  end						# nel seguente modo: P3 = P1.+(P2)
 
-  def to_s
-    puts "(#{@x.round(15)},#{@y.round(15)})"
-  end
+  def to_s					# La funzione to_s restituisce una rappresentazione testuale dell'oggetto del tipo:
+    puts "(#{@x.round(15)},#{@y.round(15)})"	# "(x,y)". A causa di problemi di arrotondamento sorti durante la fase di testing 
+  end						# abbiamo aggiunto round(15) 
 end
 
-require 'date' # necessario per l'uso della classe Date
+
+
+require 'date' 					# Necessario per l'uso della classe Date
 
 class Book
   attr_accessor :title, :author, :release_date, :publisher, :isbn
-  # Implementa il costruttore
-  # dai un'occhiata a https://robots.thoughtbot.com/ruby-2-keyword-arguments
-  def initialize(title:, author:, release_date:, publisher:, isbn:)
-    @title=title
-    @author=author
+ 
+  def initialize(title:, author:, release_date:, publisher:, isbn:)  
+    @title=title 				# La funzione inizialize ci permette di inizializzare gli attributi: title, author,
+    @author=author				# release_date, pulisher, isbn
     @release_date=release_date
     @publisher=publisher
     @isbn=isbn
   end
-  # requisiti perche' un libro sia considerato valido:
-  # title deve essere una stringa (@title.class == String) non vuota
-  # author deve essere una stringa non vuota
-  # release_date deve essere un oggetto Date
-  # publisher deve essere una stringa non vuota
-  # isbn deve essere un Integer minore di 10**10 e maggiore di 10**9
-  def valid?
-    $errore=[]
-    if (title.class != String || title=='')
+ 
+  
+  
+  def valid?					# La funzione valid? verifica che gli attributi inseriti soddisfino i requisiti affinchè
+    $errore=[]					# un libro sia considerato valido: 
+    if (title.class != String || title=='')	# title deve essere una stringa non vuota
       $errore << :title
     end
-    if (author.class != String || author=='')
+    if (author.class != String || author=='')	# author deve essere una stringa non vuota
       $errore << :author
     end
-    if !(release_date.is_a?Date)
+    if !(release_date.is_a?Date)		# release_date deve essere un oggetto Date
       $errore << :release_date
     end
-    if (publisher.class != String || publisher=='')
+    if (publisher.class != String || publisher=='') # publisher deve essere una stringa non vuota
       $errore << :publisher
     end
-    if (isbn <= 10**9 || isbn >=10**10)
+    if (isbn <= 10**9 || isbn >=10**10)		# isbn deve essere un Integer minore di 10**10 e maggiore di 10**9
       $errore << :isbn
     end
-    if $errore == []
-      return TRUE
+    if $errore == []				# Ritorna TRUE se all'array "errore" non è stato aggiunto nessun attributo che non 
+      return TRUE				# soddisfi i requisiti sopra elencati
     else
-      return FALSE
+      return FALSE				# In caso contrario ritorna FALSE 
     end
   end
-  # restituisce un array di simboli.
-  # Se l'oggetto e' valido, restituisce un vettore vuoto
-  # Se non lo e', per ogni attributo che non e' valido, la chiave per
-  # quell'attributo deve essere presente nel vettore, in qualsiasi ordine.
-  # esempio: title e author non sono validi, restituisce [:title, :author]
-  def errors
-    self.valid?
-    return $errore
-  end
-end
+
+  def errors					# La funzione restituisce un array vuoto se l'oggetto è valido , altrimenti un array 
+    self.valid?					# contente la chiave dell'attributo che non soddisfi i requisiti invocando la
+    return $errore				# funzione valid? sull'oggetto corrente ulizzando 'self'; invochiamo valid? poichè 
+  end						# l'implementazione della funzione aggiunge gli attributi ad errror durante la sua 
+end						# esecuzione
