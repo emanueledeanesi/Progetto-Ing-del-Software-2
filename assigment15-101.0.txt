@@ -4,20 +4,20 @@
 
 # Restituisce una stringa che dice "Benvenuto"
 def welcome_message
-  puts "Benvenuto"
+  return "Benvenuto"
 end
 
 # Restituisce n! (fattoriale)
 def factorial(n)
   if n == 0
-    puts "1"
+    return 1
   else
     if n>0
 	  tot=1
   	  (1..n).each do |i|
 	    tot = tot * i
 	  end
-	  puts tot
+	  return tot
   	else
   	  puts "Il valore inserito non è un numero maggiore o uguale a 0"
   	end
@@ -40,7 +40,7 @@ def find_longest_string(array)
   if max.last==""
     puts "L'array è vuoto o ha tutti gli elementi stringhe vuote"
   else
-    puts max 
+    return max 
   end
 end
 
@@ -65,7 +65,7 @@ def count_upcased_letters(string)
       next
     end
   end
-  puts i
+  return i
 end
 
 # Converte un numero in numero romano
@@ -142,7 +142,7 @@ def to_roman(n)
     when 9 
       num << 'IX'
   end
-  puts num
+  return num
 end
 
 ######
@@ -165,7 +165,7 @@ class Point2D
   end
 
   def to_s
-    puts "(#{@x.round(15)},#{@y.round(15)})"
+    return "(#{@x.round(15)},#{@y.round(15)})"
   end
 end
 
@@ -202,7 +202,7 @@ class Book
     if (publisher.class != String || publisher=='')
       $errore << :publisher
     end
-    if (isbn <= 10**9 || isbn >=10**10)
+    if (isbn.class != Fixnum  || isbn <= 10**9 || isbn >=10**10)
       $errore << :isbn
     end
     if $errore == []
