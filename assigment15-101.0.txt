@@ -1,9 +1,9 @@
-def welcome_message					# La funzione restituisce una stringa che dice "Benvenuto"
+def welcome_message						# La funzione restituisce una stringa che dice "Benvenuto"
   return "Benvenuto"
 end
 
-# Restituisce n! (fattoriale)		# La funzione restituisce il fattoriale di n
-def factorial(n)
+					
+def factorial(n)						# La funzione restituisce il fattoriale di n
   if n == 0
     return 1
   else
@@ -19,10 +19,11 @@ def factorial(n)
   end
 end
 
-def find_longest_string(array)						#La funzione restituisce la stringa più lunga in un array di stringhe
-  max=[]											#Inizialmente abbiamo implementato la funzione in modo
-  max << ""											#che nel caso ce ne siano più di una con il numero
-  array.map do |word|								#massimo di caratteri restituisca tutte le stringhe
+
+def find_longest_string(array)					#La funzione restituisce la stringa più lunga in un array di stringhe
+  max=[]							#Inizialmente abbiamo implementato la funzione in modo
+  max << ""							#che nel caso in cui l'array di input abbia più stringhe con la
+  array.map do |word|						#lunghezza della stringa più lunga restituisca tutte le stringhe
     if word.length == max.last.length				#di quella lunghezza.
       max << word
     end
@@ -33,12 +34,13 @@ def find_longest_string(array)						#La funzione restituisce la stringa più lun
   end
   if max.last==""
     puts "L'array è vuoto o ha tutti gli elementi stringhe vuote"
-  else												#Per rispettare la consegna abbiamo stampato unasola/l'unica stringa
-    return max[0] 									#Per avere tutte le stringhe basta sostituire 'max[0]' con 'max'
-  end												
+  else								#Per rispettare la consegna restituiamo una sola/la stringa più lunga
+    return max[0] 						#Per restituire tutte le stringhe basta sostituire 'max[0]' con 'max'
+  end								#L'uotput così ottenuto diventerà un array e non più una stringa
 end
 
-def has_nested_array?(array)						#La funzione restituisce true se l'array contiene altri array
+
+def has_nested_array?(array)					#La funzione restituisce true se l'array contiene altri array
   array.each do |element|
     if element.class == Array
       return TRUE
@@ -47,12 +49,13 @@ def has_nested_array?(array)						#La funzione restituisce true se l'array conti
   return FALSE
 end
 
-def count_upcased_letters(string)					#La funzione conta il numero di caratteri maiuscoli in una stringa
+
+def count_upcased_letters(string)				#La funzione conta il numero di caratteri maiuscoli in una stringa
   i = 0
   array_caratteri = string.chars.to_a
   array_caratteri.each do |carattere|
-    if (carattere != carattere.downcase)  			#Verifica quali caratteri vengono modificati dalla funzione '.downcase'
-      i=i+1											#in quanto solo i caratteri mauiscoli vengono modificati
+    if (carattere != carattere.downcase)  			#Verifica quali caratteri vengono modificati dal metodo '.downcase'
+      i=i+1							#Vengono modificati solo i caratteri maiuscoli 
     else
       next
     end
@@ -60,7 +63,7 @@ def count_upcased_letters(string)					#La funzione conta il numero di caratteri 
   return i
 end
 
-def to_roman(n)										#La funzione converte un numero in un numero romano
+def to_roman(n)							#La funzione converte un numero in un numero romano
   if n<=0
 	puts("I numeri negativi non sono convertibili in numeri romani")
 	return nil
@@ -71,7 +74,7 @@ def to_roman(n)										#La funzione converte un numero in un numero romano
   if(i>0)
     (1..i).each {|v| num << 'M'}
   end
-  n = n%1000 										#n ora è il numero inserito senza le mgliaia
+  n = n%1000 							#n ora è il numero inserito senza le migliaia
   i = n/100
   case i
     when 1 
@@ -93,7 +96,7 @@ def to_roman(n)										#La funzione converte un numero in un numero romano
     when 9 
       num << 'CM'
   end
-  n = n%100											#da qui in poi n è il numero senza le migliaia e centinaia
+  n = n%100							#adesso n è il numero senza le migliaia e le centinaia
   i = n/10
   case i
     when 1 
@@ -115,7 +118,7 @@ def to_roman(n)										#La funzione converte un numero in un numero romano
     when 9 
       num << 'XC'
   end
-  n = n%10											#ora rimangono solo le unità
+  n = n%10							#ora rimangono da convertire solo le unità
   i = n/1
   case n
     when 1 
@@ -127,11 +130,11 @@ def to_roman(n)										#La funzione converte un numero in un numero romano
     when 4 
       num << 'IV'
     when 5 
-      num << 'V'									#La funzione poteva essere implemantata con cicli for,
-    when 6 											#divisioni, moduli e array con l'elenco delle lettere romane
-      num << 'VI'									#ma abbiamo pensato che non sarebbe valsa la pena in quanto
-    when 7 											#bastano 3 cicli case più una funzione per le migliaia
-      num << 'VII'									#per definire tutti i numeri possibili.
+      num << 'V'						#La funzione poteva essere implementata con cicli for,
+    when 6 							#divisioni, moduli e array con l'elenco delle lettere romane
+      num << 'VI'						#ma abbiamo pensato che non ne sarebbe valsa la pena in quanto
+    when 7 							#bastano 3 cicli case più una funzione per le migliaia
+      num << 'VII'						#per definire tutti i numeri possibili.
     when 8 											
       num << 'VIII'									
     when 9 											
@@ -141,8 +144,6 @@ def to_roman(n)										#La funzione converte un numero in un numero romano
 end
 
 ######
-# Completa l'implementazione delle seguenti classi seguendo quanto
-# richiesto dai commenti.
 ######
 
 class Point2D
@@ -160,16 +161,16 @@ class Point2D
   end
 
   def to_s
-    return "(#{@x.round(15)},#{@y.round(15)})"						#'.round' è stato utilizzato per dei problemi
-  end																#di approssimazione coi numeri float
+    return "(#{@x.round(15)},#{@y.round(15)})"			#'.round' è stato utilizzato per problemi di
+  end								# approssimazione coi numeri float durante i testig fatti da noi
 end
 
-require 'date' # necessario per l'uso della classe Date
+
+
+require 'date' 							# necessario per l'uso della classe Date
 
 class Book
   attr_accessor :title, :author, :release_date, :publisher, :isbn
-  # Implementa il costruttore
-  # dai un'occhiata a https://robots.thoughtbot.com/ruby-2-keyword-arguments
   def initialize(title:, author:, release_date:, publisher:, isbn:)
     @title=title
     @author=author
@@ -184,10 +185,10 @@ class Book
   # publisher deve essere una stringa non vuota
   # isbn deve essere un Integer minore di 10**10 e maggiore di 10**9
   def valid?
-    $errore=[]											#Utilizziamo una variabile globale in modo che la funzione
-    if (title.class != String || title=='')				#'valid?' restituisca True o False ma possa passare gli 
-      $errore << :title									#attributi non validi ad altre funzioni. La variabile 'errore'
-    end													#viene posta come array vuoto per azzerare eventuali
+    $errore=[]							#Utilizziamo una variabile globale in modo che la funzione
+    if (title.class != String || title=='')			#'valid?' restituisca True o False ma possa passare gli 
+      $errore << :title						#attributi non validi ad altre funzioni. La variabile 'errore'
+    end								#viene posta come array vuoto per azzerare eventuali
     if (author.class != String || author=='')			#valori salvati precedentemente nella variabile
       $errore << :author
     end
@@ -206,11 +207,7 @@ class Book
       return FALSE
     end
   end
-  # restituisce un array di simboli.
-  # Se l'oggetto e' valido, restituisce un vettore vuoto
-  # Se non lo e', per ogni attributo che non e' valido, la chiave per
-  # quell'attributo deve essere presente nel vettore, in qualsiasi ordine.
-  # esempio: title e author non sono validi, restituisce [:title, :author]
+
   def errors
     self.valid?
     return $errore
